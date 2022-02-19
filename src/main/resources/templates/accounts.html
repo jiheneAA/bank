@@ -1,0 +1,33 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Bank</title>
+
+        <style>
+            th, td {
+                padding: 5px;
+            }
+        </style>
+
+    </head>
+    <body>
+    <!-- Include _menu.html -->
+        <th:block th:include="/_menu"></th:block>
+
+        <h2>Account</h2>
+
+        <table border="1">
+            <tr>
+                <th>Number</th>
+                <th>Balance</th>
+                <th>Last Update</th>
+            </tr>
+            <tr th:each="account : ${accounts}">
+                <td th:utext="${account.accountNumber}"></td>
+                <td th:utext="${account.balance}"></td>
+                <td th:utext="${account.lastUpdate}"></td>
+            </tr>
+
+        </table>
+    </body>
+</html>

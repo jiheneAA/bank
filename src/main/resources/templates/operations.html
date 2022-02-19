@@ -1,0 +1,35 @@
+<!DOCTYPE HTML>
+    <html xmlns:th="http://www.thymeleaf.org">
+    <head>
+        <title>Bank</title>
+
+        <style>
+            th, td {
+                padding: 5px;
+            }
+        </style>
+
+    </head>
+
+    <body>
+    <!-- Include _menu.html -->
+        <th:block th:include="/_menu"></th:block>
+
+        <h2>Operations</h2>
+
+        <table border="1">
+            <tr>
+                <th>ID</th>
+                <th>Amount</th>
+                <th>Date</th>
+                <th>Type</th>
+            </tr>
+            <tr th:each="operation : ${operations}">
+                <td th:utext="${operation.id}">..</td>
+                <td th:utext="${operation.amount}">..</td>
+                <td th:utext="${operation.date}">..</td>
+                <td th:utext="${operation.type}">..</td>
+            </tr>
+        </table>
+    </body>
+</html>

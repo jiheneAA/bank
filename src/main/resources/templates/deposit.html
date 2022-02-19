@@ -1,0 +1,30 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>Bank</title>
+</head>
+<body>
+<!-- Include _menu.html -->
+<th:block th:include="/_menu"></th:block>
+
+<h2>Deposit</h2>
+
+<div th:if="${errorMessage!=null}"
+     style="color:red;font-style:italic" th:utext="${errorMessage}">..</div>
+
+<form th:action="@{/operations/deposit}" method="post">
+    <div class="form-group">
+        <label>Account :</label>
+        <input th:value="${accountId}" type="text" name="accountId" id="accountId" required="required"/>
+        <br/>
+    </div>
+    <div class="form-group">
+        <label>Amount :</label>
+        <input th:value="${amount}" type="text" name="amount" id="amount" required="required"/>
+    </div>
+
+    <button type="submit">Send</button>
+</form>
+
+</body>
+</html>
