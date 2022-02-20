@@ -1,4 +1,4 @@
--- DROP TABLE IF EXISTS ACCOUNT;
+DROP TABLE IF EXISTS ACCOUNT;
 CREATE TABLE ACCOUNT (
     id INT AUTO_INCREMENT PRIMARY KEY,
     account_number VARCHAR(50) NOT NULL,
@@ -23,15 +23,19 @@ ALTER TABLE OPERATION
     ADD FOREIGN KEY (account_id)
         REFERENCES ACCOUNT(id);
 
+DROP TABLE IF EXISTS USER;
 CREATE TABLE USER (
-   id INT AUTO_INCREMENT PRIMARY KEY,
-   first_name VARCHAR(50),
-   last_name VARCHAR(50),
-   date_birth DATE,
-   address VARCHAR(50),
-   phone_number VARCHAR(50),
-   email VARCHAR(50)
+                      id         INT AUTO_INCREMENT PRIMARY KEY,
+                      first_name VARCHAR(50),
+                      last_name  VARCHAR(50),
+                      birth_date DATE,
+                      email      VARCHAR(50),
+                      username   VARCHAR(50),
+                      password   VARCHAR(50),
+                      role       VARCHAR(50),
+                      enable     TINYINT(4),
 );
 
-INSERT INTO USER VALUES (1, 'Jihene', 'Abdelhedi', '13/01/1995', 'France', '0661122473', 'jihene.abdelhedi1@gmail.com');
+INSERT INTO USER
+VALUES (1, 'Jihene', 'Abdelhedi', '13/01/1995', 'jihene.abdelhedi1@gmail.com', 'jiheneAA', '$2a$10$zxvEq8X', 'USER', 1);
 

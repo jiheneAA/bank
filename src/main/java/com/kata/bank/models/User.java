@@ -28,17 +28,23 @@ public class User {
     @Column(name = "last_name")
     private String lastName;
 
-    @Column(name = "date_birth")
-    private LocalDate dateOfBirth;
+    @Column(name = "userName")
+    private String userName;
 
-    @Column(name = "address")
-    private String address;
+    @Column(name = "password")
+    private String password;
 
-    @Column(name = "phone_number")
-    private String phoneNumber;
+    @Column(name = "role")
+    private Role role;
+
+    @Column(name = "enable")
+    private boolean isEnabled;
 
     @Column(name = "email")
     private String email;
+
+    @Column(name = "birth_date")
+    private LocalDate birthDate;
 
     @OneToMany(mappedBy = "user")
     private List<Account> accounts = new ArrayList<>();
@@ -51,19 +57,23 @@ public class User {
         Integer id,
         String firstName,
         String lastName,
-        LocalDate dateOfBirth,
-        String address,
-        String phoneNumber,
+        String userName,
+        String password,
+        Role role,
+        boolean isEnabled,
         String email,
+        LocalDate birthDate,
         List<Account> accounts) {
 
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
-        this.dateOfBirth = dateOfBirth;
-        this.address = address;
-        this.phoneNumber = phoneNumber;
+        this.userName = userName;
+        this.password = password;
+        this.role = role;
+        this.isEnabled = isEnabled;
         this.email = email;
+        this.birthDate = birthDate;
         if (CollectionUtils.isNotEmpty(accounts)) {
             this.accounts.addAll(accounts);
         }
@@ -77,11 +87,6 @@ public class User {
     public Integer getId() {
 
         return id;
-    }
-
-    public void setId(Integer id) {
-
-        this.id = id;
     }
 
     public String getFirstName() {
@@ -104,34 +109,44 @@ public class User {
         this.lastName = lastName;
     }
 
-    public LocalDate getDateOfBirth() {
+    public String getUserName() {
 
-        return dateOfBirth;
+        return userName;
     }
 
-    public void setDateOfBirth(LocalDate dateOfBirth) {
+    public void setUserName(String userName) {
 
-        this.dateOfBirth = dateOfBirth;
+        this.userName = userName;
     }
 
-    public String getAddress() {
+    public String getPassword() {
 
-        return address;
+        return password;
     }
 
-    public void setAddress(String address) {
+    public void setPassword(String password) {
 
-        this.address = address;
+        this.password = password;
     }
 
-    public String getPhoneNumber() {
+    public Role getRole() {
 
-        return phoneNumber;
+        return role;
     }
 
-    public void setPhoneNumber(String phoneNumber) {
+    public void setRole(Role role) {
 
-        this.phoneNumber = phoneNumber;
+        this.role = role;
+    }
+
+    public boolean isEnabled() {
+
+        return isEnabled;
+    }
+
+    public void setEnabled(boolean enabled) {
+
+        isEnabled = enabled;
     }
 
     public String getEmail() {
@@ -142,6 +157,16 @@ public class User {
     public void setEmail(String email) {
 
         this.email = email;
+    }
+
+    public LocalDate getBirthDate() {
+
+        return birthDate;
+    }
+
+    public void setBirthDate(LocalDate birthDate) {
+
+        this.birthDate = birthDate;
     }
 
     public List<Account> getAccounts() {
@@ -176,10 +201,10 @@ public class User {
             .append(id, user.id)
             .append(firstName, user.firstName)
             .append(lastName, user.lastName)
-            .append(dateOfBirth, user.dateOfBirth)
-            .append(address, user.address)
-            .append(phoneNumber, user.phoneNumber)
+            .append(userName, user.userName)
+            .append(password, user.password)
             .append(email, user.email)
+            .append(birthDate, user.birthDate)
             .isEquals();
     }
 
@@ -190,10 +215,10 @@ public class User {
             .append(id)
             .append(firstName)
             .append(lastName)
-            .append(dateOfBirth)
-            .append(address)
-            .append(phoneNumber)
+            .append(userName)
+            .append(password)
             .append(email)
+            .append(birthDate)
             .toHashCode();
     }
 
@@ -202,10 +227,12 @@ public class User {
         private Integer id;
         private String firstName;
         private String lastName;
-        private LocalDate dateOfBirth;
-        private String address;
-        private String phoneNumber;
+        private String userName;
+        private String password;
+        private Role role;
+        private boolean isActive;
         private String email;
+        private LocalDate dateOfBirth;
         private List<Account> accounts;
 
         Builder() {
@@ -230,27 +257,39 @@ public class User {
             return this;
         }
 
-        public Builder dateOfBirth(LocalDate dateOfBirth) {
+        public Builder userName(String userName) {
 
-            this.dateOfBirth = dateOfBirth;
+            this.userName = userName;
             return this;
         }
 
-        public Builder address(String address) {
+        public Builder password(String password) {
 
-            this.address = address;
+            this.password = password;
             return this;
         }
 
-        public Builder phoneNumber(String phoneNumber) {
+        public Builder role(Role role) {
 
-            this.phoneNumber = phoneNumber;
+            this.role = role;
+            return this;
+        }
+
+        public Builder isActive(boolean isActive) {
+
+            this.isActive = isActive;
             return this;
         }
 
         public Builder email(String email) {
 
             this.email = email;
+            return this;
+        }
+
+        public Builder dateOfBirth(LocalDate dateOfBirth) {
+
+            this.dateOfBirth = dateOfBirth;
             return this;
         }
 
@@ -262,7 +301,7 @@ public class User {
 
         public User build() {
 
-            return new User(id, firstName, lastName, dateOfBirth, address, phoneNumber, email, accounts);
+            return new User(id, firstName, lastName, userName, password, role, isActive, email, dateOfBirth, accounts);
         }
     }
 }
