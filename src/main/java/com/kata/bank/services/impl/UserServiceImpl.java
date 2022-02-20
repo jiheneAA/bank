@@ -7,6 +7,7 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
 import java.util.Optional;
 
 @Service
@@ -20,7 +21,13 @@ public class UserServiceImpl implements UserService {
     }
 
     @Override
-    public Optional<User> findByUsername() {
+    public List<User> findAll() {
+
+        return userRepository.findAll();
+    }
+
+    @Override
+    public Optional<User> findCurrentUser() {
 
         Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
 

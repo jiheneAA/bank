@@ -28,7 +28,7 @@ public class AccountServiceImpl implements AccountService {
 
     public List<Account> findAll() {
 
-        Optional<User> user = userService.findByUsername();
+        Optional<User> user = userService.findCurrentUser();
         if (!user.isPresent()) {
             return emptyList();
         }
@@ -37,7 +37,7 @@ public class AccountServiceImpl implements AccountService {
 
     public Optional<Account> findById(Integer accountId) {
 
-        Optional<User> user = userService.findByUsername();
+        Optional<User> user = userService.findCurrentUser();
 
         if (!user.isPresent()) {
             throw new ResourceNotFoundException("Account not found!");
