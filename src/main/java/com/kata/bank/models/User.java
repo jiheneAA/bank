@@ -28,8 +28,8 @@ public class User {
     @Column(name = "last_name")
     private String lastName;
 
-    @Column(name = "userName")
-    private String userName;
+    @Column(name = "username")
+    private String username;
 
     @Column(name = "password")
     private String password;
@@ -57,7 +57,7 @@ public class User {
         Integer id,
         String firstName,
         String lastName,
-        String userName,
+        String username,
         String password,
         Role role,
         boolean isEnabled,
@@ -68,7 +68,7 @@ public class User {
         this.id = id;
         this.firstName = firstName;
         this.lastName = lastName;
-        this.userName = userName;
+        this.username = username;
         this.password = password;
         this.role = role;
         this.isEnabled = isEnabled;
@@ -109,14 +109,14 @@ public class User {
         this.lastName = lastName;
     }
 
-    public String getUserName() {
+    public String getUsername() {
 
-        return userName;
+        return username;
     }
 
-    public void setUserName(String userName) {
+    public void setUsername(String username) {
 
-        this.userName = userName;
+        this.username = username;
     }
 
     public String getPassword() {
@@ -201,7 +201,7 @@ public class User {
             .append(id, user.id)
             .append(firstName, user.firstName)
             .append(lastName, user.lastName)
-            .append(userName, user.userName)
+            .append(username, user.username)
             .append(password, user.password)
             .append(email, user.email)
             .append(birthDate, user.birthDate)
@@ -215,7 +215,7 @@ public class User {
             .append(id)
             .append(firstName)
             .append(lastName)
-            .append(userName)
+            .append(username)
             .append(password)
             .append(email)
             .append(birthDate)
@@ -227,7 +227,7 @@ public class User {
         private Integer id;
         private String firstName;
         private String lastName;
-        private String userName;
+        private String username;
         private String password;
         private Role role;
         private boolean isActive;
@@ -257,9 +257,9 @@ public class User {
             return this;
         }
 
-        public Builder userName(String userName) {
+        public Builder username(String username) {
 
-            this.userName = userName;
+            this.username = username;
             return this;
         }
 
@@ -301,7 +301,7 @@ public class User {
 
         public User build() {
 
-            return new User(id, firstName, lastName, userName, password, role, isActive, email, dateOfBirth, accounts);
+            return new User(id, firstName, lastName, username, password, role, isActive, email, dateOfBirth, accounts);
         }
     }
 }
