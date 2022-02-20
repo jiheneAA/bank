@@ -41,4 +41,6 @@ CREATE TABLE USER
 );
 
 INSERT INTO USER
-VALUES (1, 'Jihene', 'Abdelhedi', '1995-01-13', 'jihene.abdelhedi1@gmail.com', 'jiheneAA', '$2a$10$zxvEq8X', 'USER', TRUE);
+-- VALUES (1, 'Jihene', 'Abdelhedi', '1995-01-13', 'jihene.abdelhedi1@gmail.com', 'jiheneAA', 'jihene_pwd', 'USER', TRUE);
+VALUES (1, 'Jihene', 'Abdelhedi', '1995-01-13', 'jihene.abdelhedi1@gmail.com', 'jiheneAA', '$2y$10$1LTz//.h7oLKEO1bbH177uk9dIhlsyvfwSuKQsb1HnZM0H165cbs.',
+        'USER', TRUE);
