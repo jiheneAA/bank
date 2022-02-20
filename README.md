@@ -24,8 +24,8 @@ N.B. USER (bank client) can have many accounts
 7. Access to H2 : http://localhost:8080/h2-console
 
 ## TO RUN project
-mvn clean install -DskipTests
-mvn spring-boot:run
+- mvn clean install -DskipTests
+- mvn spring-boot:run
  
 ## User Stories
 ##### US 1:
@@ -41,4 +41,4 @@ mvn spring-boot:run
 ##### US 3: 
 **In order to** check my operations  
 **As a** bank client  
-**I want to** see the history (operation, date, amount)  of my operations  
+**I want to** see the history (operation, date, amount, balance)  of my operations  
