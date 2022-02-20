@@ -3310,3 +3310,10 @@ Data conversion error converting "USER" [22018-200]
 2022-02-20 14:02:37 jdbc[3]: exception
 org.h2.jdbc.JdbcSQLDataException: Erreur lors de la conversion de données "USER"
 Data conversion error converting "USER" [22018-200]
+2022-02-20 14:14:06 jdbc[13]: exception
+org.h2.jdbc.JdbcSQLDataException: Valeur trop longue pour la colonne "PASSWORD VARCHAR(50)": "'$2y$10$1LTz//.h7oLKEO1bbH177uk9dIhlsyvfwSuKQsb1HnZM0H165cbs.' (60)"
+Value too long for column "PASSWORD VARCHAR(50)": "'$2y$10$1LTz//.h7oLKEO1bbH177uk9dIhlsyvfwSuKQsb1HnZM0H165cbs.' (60)"; SQL statement:
+INSERT INTO USER
+-- VALUES (1, 'Jihene', 'Abdelhedi', '1995-01-13', 'jihene.abdelhedi1@gmail.com', 'jiheneAA', 'jihene_pwd', 'USER', TRUE);
+VALUES (1, 'Jihene', 'Abdelhedi', '1995-01-13', 'jihene.abdelhedi1@gmail.com', 'jiheneAA', '$2y$10$1LTz//.h7oLKEO1bbH177uk9dIhlsyvfwSuKQsb1HnZM0H165cbs.',
+        'USER', TRUE) [22001-200]
