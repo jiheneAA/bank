@@ -1,7 +1,7 @@
 # Bank account kata
 Think of your personal bank account experience When in doubt, go for the simplest solution
 
-# Technologies used in this application
+## Technologies used in this application
 - Spring Boot
 - Spring Data JPA
 - H2 Database (embedded)
