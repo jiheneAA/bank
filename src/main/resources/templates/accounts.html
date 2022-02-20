@@ -23,9 +23,9 @@
                 <th>Last Update</th>
             </tr>
             <tr th:each="account : ${accounts}">
-                <td th:utext="${account.accountNumber}"></td>
-                <td th:utext="${account.balance}"></td>
-                <td th:utext="${account.lastUpdate}"></td>
+                <td th:if="${#authentication.getName() == account.user.username}" th:utext="${account.accountNumber}"></td>
+                <td th:if="${#authentication.getName() == account.user.username}" th:utext="${account.balance}"></td>
+                <td th:if="${#authentication.getName() == account.user.username}" th:utext="${account.lastUpdate}"></td>
             </tr>
 
         </table>

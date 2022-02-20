@@ -6,7 +6,6 @@ import org.apache.commons.collections4.CollectionUtils;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import java.util.List;
@@ -22,10 +21,10 @@ public class AccountController {
         this.accountService = accountService;
     }
 
-    @GetMapping(value = "/{id}")
-    public String findAccountsByUserId(@PathVariable("id") Integer id, Model model) {
+    @GetMapping()
+    public String findAccounts(Model model) {
 
-        List<Account> accounts = accountService.findAllByUserId(id);
+        List<Account> accounts = accountService.findAll();
         if (CollectionUtils.isEmpty(accounts)) {
             model.addAttribute("moduleName", "accounts");
             return "empty";

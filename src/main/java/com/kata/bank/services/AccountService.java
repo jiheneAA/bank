@@ -6,5 +6,5 @@ import java.util.List;
 
 public interface AccountService {
 
-    List<Account> findAllByUserId(Integer userId);
+    List<Account> findAll();
 }
