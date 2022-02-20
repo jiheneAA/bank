@@ -1,5 +1,6 @@
 package com.kata.bank.models;
 
+import org.apache.commons.collections4.CollectionUtils;
 import org.apache.commons.lang3.builder.EqualsBuilder;
 import org.apache.commons.lang3.builder.HashCodeBuilder;
 
@@ -11,7 +12,11 @@ import javax.persistence.GenerationType;
 import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
+import javax.persistence.OneToMany;
 import java.time.LocalDate;
+import java.util.ArrayList;
+import java.util.Collections;
+import java.util.List;
 
 @Entity
 public class Account {
@@ -21,7 +26,7 @@ public class Account {
     private Integer id;
 
     @Column(name = "account_number")
-    private String accountNumber;
+    private String number;
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "client_id", nullable = false)
@@ -36,18 +41,24 @@ public class Account {
     @Column(name = "last_update")
     private LocalDate lastUpdate;
 
+    @OneToMany(mappedBy = "account")
+    private List<Operation> operations = new ArrayList<>();
+
     public Account() {
 
     }
 
-    public Account(Integer id, String accountNumber, User user, LocalDate dateCreation, Double balance, LocalDate lastUpdate) {
+    public Account(Integer id, String number, User user, LocalDate dateCreation, Double balance, LocalDate lastUpdate, List<Operation> operations) {
 
         this.id = id;
-        this.accountNumber = accountNumber;
+        this.number = number;
         this.user = user;
         this.dateCreation = dateCreation;
         this.balance = balance;
         this.lastUpdate = lastUpdate;
+        if (CollectionUtils.isNotEmpty(operations)) {
+            this.operations.addAll(operations);
+        }
     }
 
     public static Builder builder() {
@@ -60,14 +71,19 @@ public class Account {
         return id;
     }
 
-    public String getAccountNumber() {
+    public void setId(Integer id) {
 
-        return accountNumber;
+        this.id = id;
     }
 
-    public void setAccountNumber(String accountNumber) {
+    public String getNumber() {
 
-        this.accountNumber = accountNumber;
+        return number;
+    }
+
+    public void setNumber(String number) {
+
+        this.number = number;
     }
 
     public User getUser() {
@@ -110,6 +126,23 @@ public class Account {
         this.lastUpdate = lastUpdate;
     }
 
+    public List<Operation> getOperations() {
+
+        return Collections.unmodifiableList(operations);
+    }
+
+    public void setOperations(List<Operation> operations) {
+
+        this.operations = operations;
+    }
+
+    public void addOperation(Operation operation) {
+
+        if (!operations.contains(operation)) {
+            operations.add(operation);
+        }
+    }
+
     @Override
     public boolean equals(Object o) {
 
@@ -123,7 +156,7 @@ public class Account {
 
         return new EqualsBuilder()
             .append(id, account.id)
-            .append(accountNumber, account.accountNumber)
+            .append(number, account.number)
             .append(user, account.user)
             .append(dateCreation, account.dateCreation)
             .isEquals();
@@ -134,7 +167,7 @@ public class Account {
 
         return new HashCodeBuilder(17, 37)
             .append(id)
-            .append(accountNumber)
+            .append(number)
             .append(user)
             .append(dateCreation)
             .toHashCode();
@@ -148,6 +181,7 @@ public class Account {
         private LocalDate dateCreation;
         private Double balance;
         private LocalDate lastUpdate;
+        private List<Operation> operations;
 
         Builder() {
 
@@ -189,9 +223,15 @@ public class Account {
             return this;
         }
 
+        public Builder operations(List<Operation> operations) {
+
+            this.operations = operations;
+            return this;
+        }
+
         public Account build() {
 
-            return new Account(id, accountNumber, user, dateCreation, balance, lastUpdate);
+            return new Account(id, accountNumber, user, dateCreation, balance, lastUpdate, operations);
         }
     }
 }

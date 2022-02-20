@@ -34,7 +34,7 @@ CREATE TABLE USER
     last_name  VARCHAR(50),
     birth_date DATE,
     email      VARCHAR(50),
-    username   VARCHAR(50)  NOT NULL,
+    username   VARCHAR(50)  NOT NULL UNIQUE,
     password   VARCHAR(200) NOT NULL,
     role       VARCHAR(50)  NOT NULL,
     enable     BOOLEAN      NOT NULL

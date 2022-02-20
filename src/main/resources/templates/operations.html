@@ -23,12 +23,14 @@
                 <th>Amount</th>
                 <th>Date</th>
                 <th>Type</th>
+                <th>Account Number</th>
             </tr>
             <tr th:each="operation : ${operations}">
                 <td th:utext="${operation.id}">..</td>
                 <td th:utext="${operation.amount}">..</td>
                 <td th:utext="${operation.date}">..</td>
                 <td th:utext="${operation.type}">..</td>
+                <td th:utext="${operation.account.number}">..</td>
             </tr>
         </table>
     </body>

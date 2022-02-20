@@ -5,9 +5,12 @@ import org.apache.commons.lang3.builder.HashCodeBuilder;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
+import javax.persistence.FetchType;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.ManyToOne;
 import java.time.LocalDate;
 
 @Entity
@@ -17,8 +20,9 @@ public class Operation {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @Column(name = "account_id")
-    private Integer accountId;
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "account_id", nullable = false)
+    private Account account;
 
     @Column(name = "amount")
     private Double amount;
@@ -33,10 +37,10 @@ public class Operation {
 
     }
 
-    public Operation(Integer id, Integer accountId, Double amount, LocalDate date, OperationType type) {
+    public Operation(Integer id, Account account, Double amount, LocalDate date, OperationType type) {
 
         this.id = id;
-        this.accountId = accountId;
+        this.account = account;
         this.amount = amount;
         this.date = date;
         this.type = type;
@@ -52,14 +56,14 @@ public class Operation {
         return id;
     }
 
-    public Integer getAccountId() {
+    public Account getAccount() {
 
-        return accountId;
+        return account;
     }
 
-    public void setAccountId(Integer accountId) {
+    public void setAccount(Account account) {
 
-        this.accountId = accountId;
+        this.account = account;
     }
 
     public Double getAmount() {
@@ -105,7 +109,7 @@ public class Operation {
 
         return new EqualsBuilder()
             .append(id, operation.id)
-            .append(accountId, operation.accountId)
+            .append(account.getId(), operation.account.getId())
             .append(amount, operation.amount)
             .append(date, operation.date)
             .append(type, operation.type)
@@ -117,7 +121,7 @@ public class Operation {
 
         return new HashCodeBuilder(17, 37)
             .append(id)
-            .append(accountId)
+            .append(account.getId())
             .append(amount)
             .append(date)
             .append(type)
@@ -127,7 +131,7 @@ public class Operation {
     public static class Builder {
 
         private Integer id;
-        private Integer accountId;
+        private Account account;
         private Double amount;
         private LocalDate date;
         private OperationType type;
@@ -142,9 +146,9 @@ public class Operation {
             return this;
         }
 
-        public Builder accountId(Integer accountId) {
+        public Builder account(Account account) {
 
-            this.accountId = accountId;
+            this.account = account;
             return this;
         }
 
@@ -168,7 +172,7 @@ public class Operation {
 
         public Operation build() {
 
-            return new Operation(id, accountId, amount, date, type);
+            return new Operation(id, account, amount, date, type);
         }
     }
 }

@@ -25,6 +25,7 @@ public class AccountController {
     public String findAccounts(Model model) {
 
         List<Account> accounts = accountService.findAll();
+
         if (CollectionUtils.isEmpty(accounts)) {
             model.addAttribute("moduleName", "accounts");
             return "empty";

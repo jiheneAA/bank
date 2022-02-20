@@ -54,7 +54,7 @@ public class OperationController {
             model.addAttribute("errorMessage", "Error: " + e.getMessage());
             return "deposit";
         }
-        return "redirect:/accounts/" + accountId;
+        return "redirect:/accounts";
     }
 
     @GetMapping(value = "/withdrawal")
@@ -75,6 +75,6 @@ public class OperationController {
             model.addAttribute("errorMessage", "Error: " + e.getMessage());
             return "withdrawal";
         }
-        return "redirect:/accounts/" + accountId;
+        return "redirect:/accounts";
     }
 }
