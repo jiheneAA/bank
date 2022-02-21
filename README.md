@@ -5,7 +5,7 @@ Think of your personal bank account experience When in doubt, go for the simples
 - Spring Boot
 - Spring Data JPA
 - H2 Database (embedded)
-- Spring security
+- Spring Security
 - Thymeleaf
 - Maven
 - GIT
@@ -14,7 +14,7 @@ Think of your personal bank account experience When in doubt, go for the simples
 
 N.B. USER (bank client) can have many accounts
 ## Using BANK ACCOUNT Application:
-1. LOGIN : http://localhost:8080/login
+1. LOGIN : http://localhost:8080/login (login: jiheneAA, password: jihene_pwd), (login: soat, password: soat_pwd)
 2. Accounts : http://localhost:8080/accounts
 3. Deposit : http://localhost:8080/operations/deposit
 3. Withdrawal : http://localhost:8080/operations/withdrawal
