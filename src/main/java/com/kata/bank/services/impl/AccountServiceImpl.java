@@ -40,7 +40,7 @@ public class AccountServiceImpl implements AccountService {
         Optional<User> user = userService.findCurrentUser();
 
         if (!user.isPresent()) {
-            throw new ResourceNotFoundException("Account not found!");
+            throw new ResourceNotFoundException("There is no current User!");
         }
         List<Account> accounts = accountRepository.findAllByUser(user.get())
             .stream()

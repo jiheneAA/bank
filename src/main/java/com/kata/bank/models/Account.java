@@ -171,7 +171,7 @@ public class Account {
     public static class Builder {
 
         private Integer id;
-        private String accountNumber;
+        private String number;
         private User user;
         private LocalDate dateCreation;
         private Double balance;
@@ -188,9 +188,9 @@ public class Account {
             return this;
         }
 
-        public Builder accountNumber(String accountNumber) {
+        public Builder number(String number) {
 
-            this.accountNumber = accountNumber;
+            this.number = number;
             return this;
         }
 
@@ -226,7 +226,7 @@ public class Account {
 
         public Account build() {
 
-            return new Account(id, accountNumber, user, dateCreation, balance, lastUpdate, operations);
+            return new Account(id, number, user, dateCreation, balance, lastUpdate, operations);
         }
     }
 }
