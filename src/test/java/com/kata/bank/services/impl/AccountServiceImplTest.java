@@ -162,4 +162,18 @@ class AccountServiceImplTest extends CommonTestConfiguration {
             .isInstanceOf(ResourceNotFoundException.class)
             .hasMessageContaining("Account not found!");
     }
+
+    @Test
+    void save_ok() {
+
+        // given
+        Account account = Account.builder().id(1).number("1234566789").balance(1000.0).build();
+
+        // when
+        accountService.save(account);
+
+        // then
+        verify(accountRepository, only()).save(account);
+    }
+
 }
