@@ -30,9 +30,9 @@ import static org.mockito.Mockito.when;
 @ComponentScan(
     useDefaultFilters = false,
     lazyInit = true,
-    basePackageClasses = AccountService.class,
+    basePackageClasses = AccountServiceImpl.class,
     includeFilters = {
-        @ComponentScan.Filter(type = FilterType.ASSIGNABLE_TYPE, classes = AccountService.class)
+        @ComponentScan.Filter(type = FilterType.ASSIGNABLE_TYPE, classes = AccountServiceImpl.class)
     }
 )
 @Import({CommonTestConfiguration.TestImportConfiguration.class})
