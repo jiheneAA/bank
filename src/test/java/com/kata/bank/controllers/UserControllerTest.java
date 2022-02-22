@@ -123,18 +123,4 @@ class UserControllerTest extends ControllerCommonTestConfiguration {
 
         verify(userService, only()).findCurrentUser();
     }
-
-//    @Test
-//    void findCurrentUser_returnResourceNotFoundException_whenNoCurrentUser() throws Exception {
-//
-//        // Given
-//        User user = User.builder().id(1).username("jiheneAA").password("jihene_password").build();
-//
-//        when(userService.findCurrentUser()).thenReturn(Optional.empty());
-//
-//        // When
-//        mockMvc
-//            .perform(get(CURRENT_USER_URL))
-//            .andExpect(result -> assertTrue(result.getResolvedException() instanceof NestedServletException));
-//    }
 }
